@@ -1,3 +1,5 @@
+#include <dt-bindings/gpio/gpio.h>
+
 / {
     chosen {
         zmk,kscan = &kscan0;
@@ -8,13 +10,13 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        row-gpios = <&gpio0 22 GPIO_ACTIVE_LOW
-                     &gpio0 24 GPIO_ACTIVE_LOW
-                     &gpio1 0  GPIO_ACTIVE_LOW>;
+        row-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>,
+                    <&gpio0 24 GPIO_ACTIVE_LOW>,
+                    <&gpio1 0  GPIO_ACTIVE_LOW>;
 
-        col-gpios = <&gpio0 11 GPIO_ACTIVE_LOW
-                     &gpio1 4  GPIO_ACTIVE_LOW
-                     &gpio1 6  GPIO_ACTIVE_LOW>;
+        col-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>,
+                    <&gpio1 4  GPIO_ACTIVE_LOW>,
+                    <&gpio1 6  GPIO_ACTIVE_LOW>;
     };
 
     transform0: transform0 {
@@ -22,9 +24,9 @@
         rows = <3>;
         columns = <3>;
         map = <
-            RC(0,0) RC(0,1) RC(0,2)
-            RC(1,0) RC(1,1) RC(1,2)
-            RC(2,0) RC(2,1) RC(2,2)
+            0 1 2
+            3 4 5
+            6 7 8
         >;
     };
 
