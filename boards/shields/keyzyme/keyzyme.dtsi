@@ -1,0 +1,45 @@
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+        label = "Keymap";
+        /* Define your keymap in keymap.keymap */
+    };
+
+    matrix {
+        compatible = "zmk,matrix";
+        row-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>,
+                     <&gpio0 24 GPIO_ACTIVE_LOW>,
+                     <&gpio1 0  GPIO_ACTIVE_LOW>;
+        col-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>,
+                     <&gpio1 4  GPIO_ACTIVE_LOW>,
+                     <&gpio1 6  GPIO_ACTIVE_LOW>;
+    };
+
+    encoder {
+        compatible = "zmk,encoder";
+        a-gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        b-gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        encoder-keycodes = < 0x0001003A >; // Example: F1 keycodes (adjust as needed)
+    };
+
+    ws2812 {
+        compatible = "zmk,ws2812";
+        pin = <&gpio0 31>;
+        chain-length = <12>; // Adjust for your actual LED count
+    };
+
+    i2c0: &i2c0 {
+        compatible = "nordic,nrf-twi";
+        status = "okay";
+        sda-pin = <1 2>;
+        scl-pin = <1 1>;
+    };
+
+    oled {
+        compatible = "zmk,ssd1306";
+        i2c = <&i2c0>;
+        width = <128>;
+        height = <64>;
+    };
+};
+

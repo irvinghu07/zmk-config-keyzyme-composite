@@ -1,0 +1,7 @@
+if SHIELD_KEYZYME
+
+# Name must be less than 16 characters!
+config ZMK_KEYBOARD_NAME
+    default "KeyZyme"
+
+endif
