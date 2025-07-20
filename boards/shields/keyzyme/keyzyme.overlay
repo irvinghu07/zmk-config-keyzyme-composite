@@ -50,6 +50,7 @@
         chain-length = <12>;
     };
 
+/*
     &i2c0 {
         status = "okay";
         sda-pin = <1 2>;
@@ -62,4 +63,6 @@
         width = <128>;
         height = <64>;
     };
+
+*/
 };
