@@ -2,11 +2,12 @@
     keymap {
         compatible = "zmk,keymap";
 
-        bindings = < 
-            &encoder_cw  &rgb_ug_toggle
-            &encoder_ccw &reset
-            &bootloader  &bt_clear_bonds
-        >;
+        default_layer {
+            bindings = <
+                &kp A &kp B &kp C
+                &kp D &kp E &kp F
+                &kp G &kp H &kp I
+            >;
+        };
     };
 };
-
