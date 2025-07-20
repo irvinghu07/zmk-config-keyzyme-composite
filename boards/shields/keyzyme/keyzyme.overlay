@@ -1,20 +1,20 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
-        zmk,matrix-transform = &transform0;
+        zmk,physical-layout = &physical_layout0;
     };
 
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        row-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>,
-                    <&gpio0 24 GPIO_ACTIVE_LOW>,
-                    <&gpio1 0  GPIO_ACTIVE_LOW>;
+        row-gpios = <&gpio0 22 GPIO_ACTIVE_LOW
+                     &gpio0 24 GPIO_ACTIVE_LOW
+                     &gpio1 0  GPIO_ACTIVE_LOW>;
 
-        col-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>,
-                    <&gpio1 4  GPIO_ACTIVE_LOW>,
-                    <&gpio1 6  GPIO_ACTIVE_LOW>;
+        col-gpios = <&gpio0 11 GPIO_ACTIVE_LOW
+                     &gpio1 4  GPIO_ACTIVE_LOW
+                     &gpio1 6  GPIO_ACTIVE_LOW>;
     };
 
     transform0: transform0 {
@@ -28,14 +28,21 @@
         >;
     };
 
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Keyzyme Layout";
+        kscan = <&kscan0>;
+        transform = <&transform0>;
+    };
+
     encoder0: encoder0 {
         compatible = "zmk,encoder";
-        a-gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-        b-gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        a-gpios = <&gpio0 20 GPIO_PULL_UP GPIO_ACTIVE_LOW>;
+        b-gpios = <&gpio0 17 GPIO_PULL_UP GPIO_ACTIVE_LOW>;
         encoder-keycodes = <0x0001003A>; // F1
     };
 
-    rgb_under {
+    rgb_under: rgb_under {
         compatible = "zmk,ws2812";
         pin = <&gpio0 31>;
         chain-length = <12>;
